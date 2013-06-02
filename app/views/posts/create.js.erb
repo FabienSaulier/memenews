@@ -1,0 +1,26 @@
+
+
+
+
+/* Insert a notice between the last comment and the comment form */
+$("#post-notice").html('<div class="flash notice"><%= escape_javascript(flash.notice()) %></div>');
+
+/* Replace the count of comments */
+$("#posts_count").html("<%= pluralize(Post.count, 'Post') %>");
+
+
+/* Add the new comment to the bottom of the comments list */
+$("#posts").append("<%= escape_javascript(render(@post)) %>");
+
+
+    
+/* Highlight the new comment */
+$("#post_<%= @post.id %>").effect("highlight", {}, 3000);
+
+
+
+
+/* Reset the comment form */
+$("#new_post")[0].reset();
+
+

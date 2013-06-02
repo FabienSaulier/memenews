@@ -10,6 +10,7 @@ class PostsController < ApplicationController
     end
   end
 
+
   # GET /posts/1
   # GET /posts/1.json
   def show
@@ -37,21 +38,46 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
+ def create
+    @post = Post.create!(params[:post])
+    flash[:notice] = "Thanks for posting!"
+    respond_to do |format|
+      format.html { redirect_to posts_path }
+      format.js
+    end
+  end
+  
+  
+  
+  def destroy
+     @post = Post.find(params[:id])
+     @post.destroy
+
+     respond_to do |format|
+       format.html { redirect_to posts_path }
+       format.js
+     end
+   end
+  
+  
   # POST /posts
   # POST /posts.json
+=begin  
   def create
     @post = Post.new(params[:post])
-
     respond_to do |format|
       if @post.save
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
         format.json { render json: @post, status: :created, location: @post }
+      
       else
-        format.html { render action: "new" }
+        format.html { render action: "index" }
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
     end
   end
+=end  
+  
 
   # PUT /posts/1
   # PUT /posts/1.json
@@ -71,6 +97,7 @@ class PostsController < ApplicationController
 
   # DELETE /posts/1
   # DELETE /posts/1.json
+=begin
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
@@ -80,4 +107,5 @@ class PostsController < ApplicationController
       format.json { head :no_content }
     end
   end
+=end
 end

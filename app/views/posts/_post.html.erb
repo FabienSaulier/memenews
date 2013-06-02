@@ -1,0 +1,13 @@
+<%= div_for post do %>
+  <span class="dateandoptions">
+    Posted <%=time_ago_in_words(post.created_at)%> ago<br />
+    <%= link_to 'Delete', post_path(post), :method => :delete, :class => "delete", :remote => true  %>
+  </span>
+
+    <%= image_tag post.image.url %>
+
+
+	<p><b><%= post.filename %></b> wrote:</p>
+	<br />
+  <%= content_tag(:p, post.external_url_news, :class => "comment-body") %>
+<% end %>

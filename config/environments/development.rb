@@ -1,4 +1,9 @@
 Memenews::Application.configure do
+  
+  # used for Paperclip : in conflict with Carriverwave
+  #Paperclip.options[:command_path] = "C:\Program Files\ImageMagick-6.8.5-Q16"
+  
+  
   # Settings specified here will take precedence over those in config/application.rb
 
   # In the development environment your application's code is reloaded on

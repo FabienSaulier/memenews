@@ -13,6 +13,19 @@ gem 'sqlite3'
 gem "devise"
 gem "cancan"
 
+# file upload
+gem 'carrierwave'
+
+# file upload (Image processer need to be installed on the server)
+#gem "paperclip", "~> 3.0"
+#gem 'cocaine', '0.3.2' # this is a downgraded depedency used internally by paperclip
+#gem 'rmagick', '2.13.2'
+
+
+
+# control console verbosity
+#gem 'quiet_assets', :group => :development
+
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -26,7 +39,8 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
+gem "jquery-rails"
+gem 'jquery-ui-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
