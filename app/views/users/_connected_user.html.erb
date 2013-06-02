@@ -1,0 +1,4 @@
+
+  <% #link_to "My Profile", user_root_path%>
+  Salut <%= current_user.email  %>
+  <%= link_to('Logout', destroy_user_session_path, :method=>'delete') %>  
