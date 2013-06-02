@@ -1,9 +1,6 @@
+<%= form_for Post.new, :remote => true  do |f| %>
 
-<% form_for Post.new, :remote => true do |f| %>
-  <div class="field">
-    <%= f.label :filename %><br />
-    <%= f.text_field :filename %>
-  </div>
+
   <div class="field">
     <%= f.label :title %><br />
     <%= f.text_field :title %>
@@ -16,6 +13,11 @@
     <%= f.label :user_id %><br />
     <%= f.number_field :user_id %>
   </div>
+  <div class="field">
+    <%= f.label :picture %><br />
+    <%= f.file_field :image %>
+  </div>
+  
   <div class="actions">
     <%= f.submit %>
   </div>

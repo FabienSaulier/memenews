@@ -5,39 +5,50 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
 
 </head>
 <body>
 
 
-       
-       
-
-
+<!--
 <% flash.each do |name, msg| %>
   <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
 <% end %>
-
-<% if user_signed_in? %>
-
-	<%= render "users/connected_user" %>
+-->
 
 
-<% else %>  
-<h2>Sign in</h2>
-<%= form_for("user", :url => user_session_path) do |f| %>
-  <%= f.text_field :email %>
-  <%= f.password_field :password %>
-  <%= f.check_box :remember_me %>
-  <%= f.label :remember_me %>
-  <%= f.submit 'Sign in' %>
-  <%= link_to "Forgot your password?", new_password_path('user') %>
-<% end %>
-<%end%>
+<div class="container">   
+	
+	<%= render "shared/header" %>
+	
+	<div id="content">
+		<div class="row">
+		
+		    <div id="user_panel" class="span3"> 
+		      <% if user_signed_in? %>
+					<%= render "users/connected_user" %>
+				<% else %>  
+					<%= render "users/not_connected_user" %>
+				<%end%>	
+		    </div>
+		    
+		    <div class="span1 spacer"></div>
+		
+		    <div class="span8">
+				<%= yield %>
+		    </div>
+		    
+	    </div>
+    </div>
+    
+	<%= render "shared/footer" %>
+	
+</div>
 
-
-<%= yield %>
 
 </body>
 </html>
+

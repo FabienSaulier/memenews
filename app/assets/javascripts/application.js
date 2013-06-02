@@ -12,5 +12,28 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require twitter/bootstrap
 //= require_tree .
 //= require jquery.ui.all
+
+
+
+  $(document).ready(function(){
+  	
+
+
+  $('#post_form_pop').popover({ 
+    html : true,
+    content: function() {
+      return $('#popover_content_wrapper').html();
+    }
+  });
+  
+  
+
+  });
+  
+  
+  
+
+

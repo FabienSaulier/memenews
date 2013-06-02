@@ -14,3 +14,17 @@
 /*
  *= require jquery.ui.all
  */
+
+
+.fixedElement {
+    position:fixed;
+    top:0;
+    width:100%;
+    z-index:100;
+    background-color:rgba(255,255,255,1);
+}
+
+
+#content{
+	margin-top:90px;
+}

@@ -1,116 +1,64 @@
+
+
+  <div class="row">
+Notifications
+       <p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p>
+  </div>
+  
+  
+    <div class="row">
 <h1>Listing posts</h1>
 
-<table>
-  <tr>
-    <th>Filename</th>
-    <th>Title</th>
-    <th>External url news</th>
-    <th>User</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+
+<p>
+	TODO! <br/>
+	inutile :      post.filename %><br />
+en "alt" + caption       post.title %>
+
+avec un onclick:        link_to 'Show', post %>
+
+si tu es admin:      link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+???			      link_to 'Edit', edit_post_path(post) %>
+	  
+</p>
+
+  </div>
+  
+  
+
+
 
 <% @posts.each do |post| %>
-  <tr>
-    <td><%= post.filename %></td>
-    <td><%= post.title %></td>
-    <td><%= post.external_url_news %></td>
-    <td><%= post.user_id %></td>
-    <td><%= image_tag post.image.url %></td>
 
-    <td><%= link_to 'Show', post %></td>
-    <td><%= link_to 'Edit', edit_post_path(post) %></td>
-    <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+  <div class="row">
+  	  	
+  	<%= render :partial => 'post', :locals => { :post => post } %>
+  	
+  </div>
 <% end %>
-</table>
 
-<br />
+
+
+
+  <div class="row">
+  	
 
 test ajax <br />
-
-
-
-<span id="posts_count"><%= pluralize(@posts.count, "Post") %></span>
-<div id="posts">
-  <%= render :partial => @posts, :locals => { :list => true } %>
-</div>
-
-<hr />
 
 <div id="post-notice"></div>
 
 
-envoyer un post ! 
 
-
-<script>
-	
-	$('#upload_form input').change(function(){
- $(this).closest('form').ajaxSubmit({
-  beforeSubmit: function(a,f,o) {
-   o.dataType = 'json';
-  },
-  complete: function(XMLHttpRequest, textStatus) {
-  	
-  	alert(XMLHttpRequest.responseText);
-   // XMLHttpRequest.responseText will contain the URL of the uploaded image.
-   // Put it in an image element you create, or do with it what you will.
-   // For example, if you have an image elemtn with id "my_image", then
-   //  $('#my_image').attr('src', XMLHttpRequest.responseText);
-   // Will set that image tag to display the uploaded image.
-  },
- });
-});
-	
-</script>
-
-
-<%= form_for Post.new, :remote => true  do |f| %>
-
-  <div class="field">
-    <%= f.label :filename %><br />
-    <%= f.text_field :filename %>
-  </div>
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :external_url_news %><br />
-    <%= f.text_field :external_url_news %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.number_field :user_id %>
-  </div>
-  <div class="field">
-    <%= f.label :picture %><br />
-    <%= f.file_field :image %>
-  </div>
-  
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
 
 
 
 
 fin test ajax <br />
 
+</div>
 
-Notifications
-       <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
+
        
        
-
-
-
-<%= link_to 'New Post', new_post_path %>
-
-
-
 

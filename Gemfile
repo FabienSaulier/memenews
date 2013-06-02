@@ -13,15 +13,11 @@ gem 'sqlite3'
 gem "devise"
 gem "cancan"
 
+
 # file upload
-gem 'carrierwave'
-
-# file upload (Image processer need to be installed on the server)
-#gem "paperclip", "~> 3.0"
-#gem 'cocaine', '0.3.2' # this is a downgraded depedency used internally by paperclip
-#gem 'rmagick', '2.13.2'
-
-
+gem 'carrierwave', '0.5.4'
+# resize , github link for bug fixing
+gem 'mini_magick', :git => 'git://github.com/minimagick/minimagick.git', :ref => '6d0f8f953112cce6324a524d76c7e126ee14f392'
 
 # control console verbosity
 #gem 'quiet_assets', :group => :development
@@ -38,6 +34,8 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
 end
+
+gem "twitter-bootstrap-rails"
 
 gem "jquery-rails"
 gem 'jquery-ui-rails'

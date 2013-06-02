@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+
   # GET /posts
   # GET /posts.json
   def index
@@ -40,7 +41,12 @@ class PostsController < ApplicationController
 
  def create
     @post = Post.create!(params[:post])
+    
+
+
     flash[:notice] = "Thanks for posting!"
+    
+
     respond_to do |format|
       format.html { redirect_to posts_path }
       format.js
