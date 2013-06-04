@@ -18,10 +18,10 @@
 
 
 
-  $(document).ready(function(){
+$(document).ready(function(){
   	
 
-
+	// display post form
   $('#post_form_pop').popover({ 
     html : true,
     content: function() {
@@ -29,11 +29,24 @@
     }
   });
   
-  
 
+
+
+	// display block/none button on post :hover
+  $(".post").hover(function(){
+  	
+  	$(this).children(":first").next().removeClass('rank_btn_off');
+  	$(this).children(":first").next().addClass('rank_btn_on');
+  	
+  },function(){
+	$(this).children(":first").next().removeClass('rank_btn_on');
+  	$(this).children(":first").next().addClass('rank_btn_off');
   });
   
+
   
-  
+
+});
+
 
 

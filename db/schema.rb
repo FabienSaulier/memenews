@@ -11,10 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130602153521) do
+ActiveRecord::Schema.define(:version => 20130603235724) do
 
-  create_table "blog_images", :force => true do |t|
-    t.string "image"
+  create_table "comments", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "post_id"
+    t.string   "text"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "posts", :force => true do |t|
@@ -22,14 +26,20 @@ ActiveRecord::Schema.define(:version => 20130602153521) do
     t.string   "title"
     t.string   "external_url_news"
     t.integer  "user_id"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
     t.string   "image"
     t.integer  "tmp_image_id"
+    t.integer  "user_id_id"
+    t.integer  "count_up",          :default => 0
+    t.integer  "count_down",        :default => 0
   end
 
-  create_table "tmp_images", :force => true do |t|
-    t.string "image"
+  create_table "profils", :force => true do |t|
+    t.string   "nickname"
+    t.string   "avatar"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|
@@ -46,6 +56,7 @@ ActiveRecord::Schema.define(:version => 20130602153521) do
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.string   "username"
+    t.string   "avatar"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

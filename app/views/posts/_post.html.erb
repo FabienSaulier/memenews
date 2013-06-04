@@ -1,10 +1,42 @@
 
-<div id="post_<%= post.id %>">
-	<%= image_tag(post.image, :size => "640x480", :alt => post.title) %><br />
-	post by: <%= post.user_id %>, <%=time_ago_in_words(post.created_at)%> ago <br />
-	check the news on: <%= post.external_url_news %> <br />
-	<%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+<div class="post" id="post_<%= post.id %>" >
 	
-	 <%= link_to 'Delete', post_path(post), :method => :delete, :class => "delete", :remote => true  %> 
+	<%= image_tag(post.image, :size => "640x480", :alt => post.title, :class => "post_img imagedropshadow  " ) %>
+	
+	
+	<ul class="rank_btn rank_btn_off">
+	 	<li class="btn"><%= link_to 'Up', :controller => :posts, :action => :countUp, :id => post.id , :remote => true  %></li>
+	 	<li class="btn"><%= link_to 'Down', :controller => :posts, :action => :countDown, :id => post.id , :remote => true  %> </li>
+	</ul>
+	<br />
+	<span class="post_info">
+		<span id="count_<%=post.id%>" >
+			<span class="count_up"><%= post.count_up %></span><i class="icon-arrow-up"></i>
+			/
+			<span class="count_down"><%= post.count_down %></span><i class="icon-arrow-down"></i>
+		</span>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		posted by <%= post.user.username %>
+		<%=time_ago_in_words(post.created_at)%> ago
+	</span>
+
+
+	<% if(post.comments.size != 0) %>
+		<table class="table table-striped">
+			<% post.comments.each do |i| %>
+				<tr>
+					<td><span class="comment"><%= i.text %></span></td>
+				</tr>
+			<% end %>
+		</table>
+	<% end%>
+
+	<br />
+	
+	
+	<!-- check the news on: <%= post.external_url_news %> <br /> -->
+
+	 <br />
+	 <br />
 </div>
 	

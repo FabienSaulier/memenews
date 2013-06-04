@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nickname:</b>
+  <%= @profil.nickname %>
+</p>
+
+<p>
+  <b>Avatar:</b>
+  <%= @profil.avatar %>
+</p>
+
+
+<%= link_to 'Edit', edit_profil_path(@profil) %> |
+<%= link_to 'Back', profils_path %>

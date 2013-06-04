@@ -1,63 +1,21 @@
 
-
-  <div class="row">
-Notifications
-       <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
-  </div>
+<div class="row">
+	<% if flash[:notice] %>
+		<div id="notice" class="alert alert-success" >
+			<%= flash[:notice] %>
+		</div>
+	<% end %>
+</div>  
   
-  
-    <div class="row">
-<h1>Listing posts</h1>
-
-
-<p>
-	TODO! <br/>
-	inutile :      post.filename %><br />
-en "alt" + caption       post.title %>
-
-avec un onclick:        link_to 'Show', post %>
-
-si tu es admin:      link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
-???			      link_to 'Edit', edit_post_path(post) %>
-	  
-</p>
-
-  </div>
-  
-  
-
-
-
-<% @posts.each do |post| %>
-
-  <div class="row">
-  	  	
-  	<%= render :partial => 'post', :locals => { :post => post } %>
-  	
-  </div>
-<% end %>
-
-
-
-
-  <div class="row">
-  	
-
-test ajax <br />
-
-<div id="post-notice"></div>
-
-
-
-
-
-
-
-fin test ajax <br />
-
+<div class="row">
+	<h3>News of the day</h3>
 </div>
 
+<% @posts.each do |post| %>
+  <div class="row">
+  	<%= render :partial => 'post', :locals => { :post => post } %>
+  </div>
+<% end %>
 
        
        

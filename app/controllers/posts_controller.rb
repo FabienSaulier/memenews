@@ -3,8 +3,8 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
-
+    
+    @posts =  Post.all :include => [:user]
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @posts }
@@ -16,8 +16,10 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
     @post = Post.find(params[:id])
-
-    respond_to do |format|
+    @user = @post.user
+    @comments = @post.comments
+  
+      respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @post }
     end
@@ -38,15 +40,11 @@ class PostsController < ApplicationController
   def edit
     @post = Post.find(params[:id])
   end
+  
 
  def create
     @post = Post.create!(params[:post])
-    
-
-
-    flash[:notice] = "Thanks for posting!"
-    
-
+    flash[:notice] = "Thank you, your post is going through the publication."
     respond_to do |format|
       format.html { redirect_to posts_path }
       format.js
@@ -54,7 +52,7 @@ class PostsController < ApplicationController
   end
   
   
-  
+  # delete post ajaxified
   def destroy
      @post = Post.find(params[:id])
      @post.destroy
@@ -65,24 +63,23 @@ class PostsController < ApplicationController
      end
    end
   
-  
-  # POST /posts
-  # POST /posts.json
-=begin  
-  def create
-    @post = Post.new(params[:post])
-    respond_to do |format|
-      if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
-        format.json { render json: @post, status: :created, location: @post }
-      
-      else
-        format.html { render action: "index" }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
-    end
+   # posts/:id/up
+  def countUp
+    Post.increment_counter(:count_up, params[:id])
+    @post = Post.find(params[:id])
+     respond_to do |format|
+       format.js
+     end
   end
-=end  
+  
+  # posts/:id/down
+  def countDown
+    Post.increment_counter(:count_down, params[:id])
+    @post = Post.find(params[:id])
+     respond_to do |format|
+       format.js
+     end
+  end
   
 
   # PUT /posts/1
@@ -101,17 +98,4 @@ class PostsController < ApplicationController
     end
   end
 
-  # DELETE /posts/1
-  # DELETE /posts/1.json
-=begin
-  def destroy
-    @post = Post.find(params[:id])
-    @post.destroy
-
-    respond_to do |format|
-      format.html { redirect_to posts_url }
-      format.json { head :no_content }
-    end
-  end
-=end
 end

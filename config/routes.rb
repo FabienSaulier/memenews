@@ -1,12 +1,22 @@
 Memenews::Application.routes.draw do
 
 
+  resources :comments
+
+
+  resources :profils
+
+
   devise_for :users, :path_names => {:sign_in => "login", :sign_out => "logout"}, :path => "user"
   
 #  resources :users
 
   resources :posts
   
+  match '/posts/:id/up(.:format)' => 'posts#countUp'
+  match '/posts/:id/down(.:format)' => 'posts#countDown'
+  
+
 
   root :to => "posts#index"
 
