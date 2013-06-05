@@ -22,8 +22,16 @@
     </div>
   </div>
   
-  <div class="actions">
-    <%= f.submit %>
-  </div>
   
+  <% if user_signed_in? %>
+	  <div class="actions">
+	    <%= f.submit %>
+	  </div>
+  <% else %>
+  	  <p class="text-warning">You need to be sign in to post</p>
+  <% end %>
+
+
+
+
 <% end %>

@@ -18,6 +18,9 @@
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		posted by <%= post.user.username %>
 		<%=time_ago_in_words(post.created_at)%> ago
+		<% if user_signed_in? %>
+			&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to 'Delete this picture', post_path(post), :method => :delete, :class => "delete", :remote => true  %>
+		<% end %>
 	</span>
 
 

@@ -1,9 +1,72 @@
-	<h2>Sign in</h2>
-	<%= form_for("user", :url => user_session_path) do |f| %>
-	  <%= f.text_field :email %>
-	  <%= f.password_field :password %>
-	  <%= f.check_box :remember_me %>
-	  <%= f.label :remember_me %>
-	  <%= f.submit 'Sign in' %>
-	  <%= link_to "Forgot your password?", new_password_path('user') %>
-	<% end %>
+
+
+
+
+
+    <div id="login_tabs"   data-tabs="tabs" >
+    	<span class="active" ><a href="#signin_div" data-toggle="tab">Sign in</a></span>
+    	/
+    	<span><a href="#signup_div" data-toggle="tab">Register</a></span>
+    </div>
+    <br />
+
+    <div id="my-tab-content" class="tab-content">
+    	
+        <div class="tab-pane active" id="signin_div">
+        	
+			<%= form_for("user", :url => user_session_path) do |f| %>
+			  <div class="control-group">
+			    <label class="control-label">E-mail:</label>
+			    <div class="controls">
+			    	<%= f.text_field :email, :placeholder=>:email %>
+			    </div>
+			  </div>
+			  <div class="control-group">
+			    <label class="control-label">Password:</label>
+			    <div class="controls">
+			    	<%= f.password_field :password, :placeholder=>:password %>
+			    </div>
+			  </div>
+			  <div class="actions">
+			     <%= f.submit 'Sign in' %>
+			  </div>
+			<% end %>
+
+        </div>
+        
+        <div class="tab-pane" id="signup_div">
+			<%= form_for('user', :url => user_registration_path) do |f| %>
+			  <div class="control-group">
+			    <label class="control-label">E-mail:</label>
+			    <div class="controls">
+			    	<%= f.text_field :email, :placeholder=>'enter a email address'%>
+			    </div>
+			  </div>
+			  <div class="control-group">
+			    <label class="control-label">Nickname</label>
+			    <div class="controls">
+			    	<%= f.text_field :username, :placeholder=>'your nickname' %>
+			    </div>
+			  </div>
+			  <div class="control-group">
+			    <label class="control-label">Password:</label>
+			    <div class="controls">
+			    	<%= f.password_field :password, :placeholder=>'min 8 characters' %>
+			    </div>
+			  </div>
+			  <div class="control-group">
+			    <label class="control-label">Password confirmation:</label>
+			    <div class="controls">
+			    	<%= f.password_field :password_confirmation, :placeholder=>'confirm password' %>
+			    </div>
+			  </div>
+			  <div class="actions">
+			     <%= f.submit 'Register' %>
+			  </div>
+			<% end %>
+        </div>
+        
+    </div>
+
+
+

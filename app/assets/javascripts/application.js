@@ -18,8 +18,17 @@
 
 
 
+
 $(document).ready(function(){
-  	
+    
+	// toggle tabs for sign in /  sign up forms  	
+	$('a[data-toggle="tab"]').on('show', function (e) {
+	//  e.target // activated tab
+	//  e.relatedTarget // previous tab
+		$("#login_tabs .active").removeAttr("class");
+		$(this).attr("class", "active");
+	}); 
+
 
 	// display post form
   $('#post_form_pop').popover({ 

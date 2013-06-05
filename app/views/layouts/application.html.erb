@@ -31,7 +31,10 @@
 		      <% if user_signed_in? %>
 					<%= render "users/connected_user" %>
 				<% else %>  
-					<%= render "users/not_connected_user" %>
+
+					<% if params[:controller] == 'posts'  && params[:action] == 'index' %>
+						<%= render "users/not_connected_user" %>
+					<% end %>
 				<%end%>	
 		    </div>
 		    
