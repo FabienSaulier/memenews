@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130603235724) do
+ActiveRecord::Schema.define(:version => 20130605024013) do
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id"
@@ -28,11 +28,9 @@ ActiveRecord::Schema.define(:version => 20130603235724) do
     t.integer  "user_id"
     t.datetime "created_at",                       :null => false
     t.datetime "updated_at",                       :null => false
-    t.string   "image"
-    t.integer  "tmp_image_id"
-    t.integer  "user_id_id"
     t.integer  "count_up",          :default => 0
     t.integer  "count_down",        :default => 0
+    t.string   "image"
   end
 
   create_table "profils", :force => true do |t|
